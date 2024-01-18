@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Data Example</title>
+</head>
+<body>
+<div id='ki'></div>
+<script>
+    async function fetchData() {
+        try {
+            // Replace 'your_api_url_here' with the actual URL of your API endpoint
+            var apiUrl = 'https://jsonplaceholder.typicode.com/users';
+
+            // Make a fetch request
+            var response = await fetch(apiUrl);
+
+            // Check if the request was successful (status code 200)
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            // Parse the JSON response
+            var jsonResponse = await response.json();
+
+            // Convert JSON object to a string
+            var jsonString = JSON.stringify(jsonResponse);
+
+            // Now you can use the string as needed
+            console.log('JSON String:', jsonString);
+        } catch (error) {
+            // Handle errors
+            console.error('Error fetching data:', error);
+        }
+         document.getElementById('ki').textContent =jsonString
+    }
+
+    // Call the function to fetch and handle the data
+    fetchData();
+</script>
+
+</body>
+</html>
+
